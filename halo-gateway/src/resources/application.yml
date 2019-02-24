@@ -1,0 +1,12 @@
+server:
+  port: 8868
+
+# 服务注册中心配置
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      default-url: http://${eureka.instance.hostname}:8761/eureka
+
+

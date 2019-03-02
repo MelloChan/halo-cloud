@@ -1,9 +1,9 @@
 ## Halo手机商城服务端
--[halo-api]()  
--[halo-base]()  
--[halo-eureka-server]()  
--[halo-gateway]()  
--[halo-server]()  
+- [halo-api](https://github.com/MelloChan/halo-cloud/tree/master/halo-api)：Remote-API    
+- [halo-base](https://github.com/MelloChan/halo-cloud/tree/master/halo-base)：基础包  
+- [halo-eureka-server](https://github.com/MelloChan/halo-cloud/tree/master/halo-eureka-server)：服务注册中心    
+- [halo-gateway](https://github.com/MelloChan/halo-cloud/tree/master/halo-gateway)：统一入口网关    
+- [halo-server](https://github.com/MelloChan/halo-cloud/tree/master/halo-server)：服务提供方    
 
 ### Halo手机商城前端
 
@@ -11,7 +11,7 @@
 
 ### 服务端技术选型  
 
-- 框架: Spring Boot、Mybatis  
+- 框架: Spring Cloud、Mybatis  
 - 数据库: MySQL5.7  
 - 缓存服务器: Redis3.2  
 - 应用服务器: Tomcat8    

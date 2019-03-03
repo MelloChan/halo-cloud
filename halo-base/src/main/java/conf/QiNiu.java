@@ -1,12 +1,13 @@
 package conf;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * @author MelloChan
  * @date 2018/5/25
  */
-
+@Component
 public class QiNiu {
 
     @Value("${qiniu.accessKey}")

@@ -2,6 +2,7 @@ package conf;
 
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 /**
  * 短信服务配置
@@ -9,7 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
  * @author MelloChan
  * @date 2018/5/10
  */
-
+@Component
 public class Ucpaas {
 
     @Value("${ucpaas.sid}")

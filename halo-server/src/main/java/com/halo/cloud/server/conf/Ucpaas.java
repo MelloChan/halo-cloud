@@ -1,4 +1,4 @@
-package conf;
+package com.halo.cloud.server.conf;
 
 
 import org.springframework.beans.factory.annotation.Value;

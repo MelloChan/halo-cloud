@@ -17,11 +17,11 @@ public interface BrandDao {
      * 获取品牌
      */
     @Select(" SELECT id,brand_name FROM hl_brand LIMIT 0,7")
-    List<Brand>getBrand();
+    List<Brand> getBrand();
 
     /**
      * 根据分类id获取品牌
      */
     @Select(" SELECT id,brand_name FROM hl_brand WHERE cate_id = #{cateId}")
-    List<Brand>getBrandByCateId(@Param("cateId") Integer cateId);
+    List<Brand> getBrandByCateId(@Param("cateId") Integer cateId);
 }

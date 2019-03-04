@@ -3,6 +3,7 @@ package com.halo.cloud.server.dao;
 import entity.Type;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -12,8 +13,12 @@ import java.util.List;
  */
 @Mapper
 public interface TypeDao {
+
     /**
      * 根据分类id查找
      */
-    List<Type>getTypeByCateId(@Param("cateId") Integer cateId);
+    @Select("SELECT id,type_name " +
+            "FROM hl_type " +
+            "WHERE cate_id = #{cateId}")
+    List<Type> getTypeByCateId(@Param("cateId") Integer cateId);
 }

@@ -1,8 +1,7 @@
 package com.halo.cloud.server.dao;
 
 import entity.UserProfile;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -17,6 +16,8 @@ public interface UserProfileDao {
      *
      * @param userProfile 用户个人信息类
      */
+    @Insert("INSERT INTO hl_user_profile (user_id, username, phone)\n" +
+            "VALUES (#{userId}, #{username}, #{phone})")
     void insertUserProfileInfo(UserProfile userProfile);
 
     /**
@@ -25,6 +26,15 @@ public interface UserProfileDao {
      * @param userId 用户注册时赋值的唯一id
      * @return 用户个人信息
      */
+    @Select("SELECT\n" +
+            "            username,\n" +
+            "            avatar,\n" +
+            "            security_level,\n" +
+            "            email,\n" +
+            "            phone,\n" +
+            "            pwd_protection\n" +
+            "        FROM hl_user_profile\n" +
+            "        WHERE user_id = #{userId}")
     UserProfile getUserProfileInfoByUId(@Param("userId") Integer userId);
 
     /**
@@ -33,6 +43,9 @@ public interface UserProfileDao {
      * @param userId 用户id
      * @return 哈币
      */
+    @Select("SELECT hl_coin\n" +
+            "        FROM hl_user_profile\n" +
+            "        WHERE user_id = #{userId}")
     Integer getHaloCoinByUId(@Param("userId") Integer userId);
 
     /**
@@ -41,6 +54,9 @@ public interface UserProfileDao {
      * @param username 用户名
      * @return 用户个人信息id
      */
+    @Select("SELECT id\n" +
+            "        FROM hl_user_profile\n" +
+            "        WHERE username = #{username}")
     Integer getIdByUsername(@Param("username") String username);
 
     /**
@@ -49,6 +65,9 @@ public interface UserProfileDao {
      * @param email 用户邮箱
      * @return 用户个人信息id
      */
+    @Select("SELECT id\n" +
+            "        FROM hl_user_profile\n" +
+            "        WHERE email = #{email}")
     Integer getIdByEmail(@Param("email") String email);
 
     /**
@@ -58,6 +77,9 @@ public interface UserProfileDao {
      * @param userId 用户ID
      * @return 返回影响条数
      */
+    @Update("UPDATE hl_user_profile\n" +
+            "        SET hl_coin = #{number}, gmt_updated = now()\n" +
+            "        WHERE user_id = #{userId}")
     Integer updateCoinByUId(@Param("number") Integer number, @Param("userId") Integer userId);
 
     /**
@@ -66,6 +88,9 @@ public interface UserProfileDao {
      * @param imgUrl 七牛云外链地址
      * @param userId 用户id
      */
+    @Update("UPDATE hl_user_profile\n" +
+            "        SET avatar = #{imgUrl}, gmt_updated = now()\n" +
+            "        WHERE user_id = #{userId}")
     void updateAvatarById(@Param("imgUrl") String imgUrl, @Param("userId") Integer userId);
 
     /**
@@ -74,6 +99,9 @@ public interface UserProfileDao {
      * @param email  用户邮箱
      * @param userId 用户id
      */
+    @Update("UPDATE hl_user_profile\n" +
+            "        SET email = #{email}, gmt_updated = now()\n" +
+            "        WHERE user_id = #{userId}")
     Integer updateEmailById(@Param("email") String email, @Param("userId") Integer userId);
 
     /**
@@ -83,6 +111,9 @@ public interface UserProfileDao {
      * @param userId 用户id
      * @return 影响条数
      */
+    @Update("UPDATE hl_user_profile\n" +
+            "        SET phone = #{phone}, gmt_updated = now()\n" +
+            "        WHERE user_id = #{userId}")
     Integer updatePhoneByUId(@Param("phone") String phone, @Param("userId") Integer userId);
 
 
@@ -93,6 +124,16 @@ public interface UserProfileDao {
      * @param pageCount 一页显示的数据量
      * @return 所有用户的个人信息
      */
+    @Select("SELECT\n" +
+            "            user_id,\n" +
+            "            username,\n" +
+            "            security_level,\n" +
+            "            email,\n" +
+            "            phone,\n" +
+            "            gmt_create,\n" +
+            "            gmt_updated\n" +
+            "        FROM hl_user_profile\n" +
+            "        LIMIT #{pageIndex}, #{pageCount}")
     List<UserProfile> getUsersProfile(@Param("pageIndex") Integer pageIndex, @Param("pageCount") Integer pageCount);
 
     /**
@@ -100,7 +141,14 @@ public interface UserProfileDao {
      *
      * @param idList 用户id列表
      */
-    void deleteUsersProfile(List<Integer> idList);
+    @Delete("<SCRIPT>" +
+            "DELETE FROM hl_user_profile\n" +
+            "        WHERE user_id IN\n" +
+            "        <foreach collection=\"list\" item=\"idItem\" open=\"(\" separator=\",\" close=\")\">\n" +
+            "            #{idItem}\n" +
+            "        </foreach>" +
+            "</SCRIPT>")
+    void deleteUsersProfile(@Param("list") List<Integer> idList);
 
     /**
      * 获取指定用户的个人信息
@@ -108,6 +156,16 @@ public interface UserProfileDao {
      * @param uid 用户id
      * @return 返回指定用户的个人信息
      */
+    @Select("SELECT\n" +
+            "            user_id,\n" +
+            "            username,\n" +
+            "            security_level,\n" +
+            "            email,\n" +
+            "            phone,\n" +
+            "            gmt_create,\n" +
+            "            gmt_updated\n" +
+            "        FROM hl_user_profile\n" +
+            "        WHERE user_id = #{uid}")
     UserProfile getUserProfileByUId(@Param("uid") Integer uid);
 
     /**
@@ -115,5 +173,7 @@ public interface UserProfileDao {
      *
      * @return 返回用户数
      */
+    @Select("SELECT count(id)\n" +
+            "        FROM hl_user_profile")
     Integer getNumOfUsers();
 }

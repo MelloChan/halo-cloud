@@ -1,7 +1,7 @@
 package util;
 
 import com.google.gson.Gson;
-import com.qiniu.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author MelloChan
@@ -23,7 +23,7 @@ public class GsonUtil {
 
     public static Object jsonToObject(String jStr, Class clazz) {
         Object o = null;
-        if (!StringUtils.isNullOrEmpty(jStr)) {
+        if (!StringUtils.isNotBlank(jStr)) {
             o = gson.fromJson(jStr, clazz);
         }
         return o;

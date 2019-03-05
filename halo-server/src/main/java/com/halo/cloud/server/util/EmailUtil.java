@@ -1,7 +1,7 @@
-package util;
+package com.halo.cloud.server.util;
 
+import com.halo.cloud.server.conf.Email;
 import com.sun.mail.util.MailSSLSocketFactory;
-import conf.Email;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;

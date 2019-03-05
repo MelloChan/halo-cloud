@@ -1,8 +1,12 @@
 package com.halo.cloud.server.service;
 
 
-import conf.Email;
-import conf.Ucpaas;
+import com.halo.cloud.server.conf.Email;
+import com.halo.cloud.server.conf.Ucpaas;
+import com.halo.cloud.server.util.EmailUtil;
+import com.halo.cloud.server.util.RedisUtil;
+import com.halo.cloud.server.util.SmsUtil;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

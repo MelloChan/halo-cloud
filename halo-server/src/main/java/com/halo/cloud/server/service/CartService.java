@@ -2,6 +2,7 @@ package com.halo.cloud.server.service;
 
 import com.auth0.jwt.interfaces.Claim;
 
+import com.halo.cloud.server.util.RedisUtil;
 import dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

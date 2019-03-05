@@ -1,6 +1,7 @@
-package util;
+package com.halo.cloud.server.util;
 
 import com.google.gson.Gson;
+import com.halo.cloud.server.conf.QiNiu;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
@@ -8,7 +9,6 @@ import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
-import conf.QiNiu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

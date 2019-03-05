@@ -1,18 +1,18 @@
 package com.halo.cloud.server.service.impl;
 
 
+import com.halo.cloud.server.conf.QiNiu;
 import com.halo.cloud.server.dao.UserAddressDao;
 import com.halo.cloud.server.dao.UserProfileDao;
 import com.halo.cloud.server.dao.UserRegistryDao;
 import com.halo.cloud.server.service.UserInfoService;
-import conf.QiNiu;
 import entity.*;
 import dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import util.DigestUtil;
-import util.UploadUtil;
+import com.halo.cloud.server.util.UploadUtil;
 
 import javax.servlet.http.Part;
 import java.io.BufferedInputStream;

@@ -1,7 +1,8 @@
-package util;
+package com.halo.cloud.server.util;
 
-
-import conf.Ucpaas;
+import com.halo.cloud.server.conf.Ucpaas;
+import util.GsonUtil;
+import util.HttpUtil;
 
 /**
  * @author MelloChan

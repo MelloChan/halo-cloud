@@ -1,6 +1,11 @@
 server:
   port: 8868
 
+# zuul
+ribbon:
+  eureka:
+    enabled: true
+
 # 服务注册中心配置
 eureka:
   instance:

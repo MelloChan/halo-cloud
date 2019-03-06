@@ -8,8 +8,12 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>halo-base</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <name>halo-base</name>
+    <description>halo-base::halo project for Spring Boot</description>
+
     <dependencies>
         <!--validator-->
         <dependency>

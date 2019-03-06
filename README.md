@@ -1,13 +1,19 @@
-## Halo手机商城服务端
-- [halo-api](https://github.com/MelloChan/halo-cloud/tree/master/halo-api)：Remote-API    
+## Halo手机商城服务端  
+
 - [halo-base](https://github.com/MelloChan/halo-cloud/tree/master/halo-base)：基础包  
 - [halo-eureka-server](https://github.com/MelloChan/halo-cloud/tree/master/halo-eureka-server)：服务注册中心    
 - [halo-gateway](https://github.com/MelloChan/halo-cloud/tree/master/halo-gateway)：统一入口网关    
-- [halo-server](https://github.com/MelloChan/halo-cloud/tree/master/halo-server)：服务提供方    
+- [halo-store-api](https://github.com/MelloChan/halo-cloud/tree/master/halo-store-api)：store-remote-api      
+- [halo-admin-api](https://github.com/MelloChan/halo-cloud/tree/master/halo-admin-api)：admin-remote-api      
+- [halo-forum-api](https://github.com/MelloChan/halo-cloud/tree/master/halo-forum-api)：forum-remote-api      
+- [halo-store-server](https://github.com/MelloChan/halo-cloud/tree/master/halo-store-server)：商城服务提供方      
+- [halo-admin-server](https://github.com/MelloChan/halo-cloud/tree/master/halo-admin-server)：后台服务提供方    
+- [halo-forum-server](https://github.com/MelloChan/halo-cloud/tree/master/halo-forum-server)：论坛服务提供方    
+
 
 ### Halo手机商城前端
 
-- [Halo](https://github.com/tozlam/Halo.)
+- [Halo](https://github.com/tozlam/HALO_NODE_SERVER)
 
 ### 服务端技术选型  
 

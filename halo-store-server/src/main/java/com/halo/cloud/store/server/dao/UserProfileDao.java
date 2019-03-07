@@ -1,6 +1,6 @@
 package com.halo.cloud.store.server.dao;
 
-import com.halo.cloud.entity.UserProfile;
+import com.halo.cloud.entity.store.UserProfile;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

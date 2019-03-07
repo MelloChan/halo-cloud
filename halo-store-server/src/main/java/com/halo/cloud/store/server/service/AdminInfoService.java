@@ -1,7 +1,7 @@
 package com.halo.cloud.store.server.service;
 
 
-import com.halo.cloud.entity.Admin;
+import com.halo.cloud.entity.store.Admin;
 
 /**
  * @author SAIKAII

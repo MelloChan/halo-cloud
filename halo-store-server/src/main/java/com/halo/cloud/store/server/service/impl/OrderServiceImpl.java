@@ -1,9 +1,9 @@
 package com.halo.cloud.store.server.service.impl;
 
 import com.halo.cloud.dto.*;
-import com.halo.cloud.entity.Order;
-import com.halo.cloud.entity.OrderProduct;
-import com.halo.cloud.entity.OrderShipment;
+import com.halo.cloud.entity.store.Order;
+import com.halo.cloud.entity.store.OrderProduct;
+import com.halo.cloud.entity.store.OrderShipment;
 import com.halo.cloud.store.server.dao.OrderDao;
 import com.halo.cloud.store.server.dao.OrderProductDao;
 import com.halo.cloud.store.server.dao.OrderShipmentDao;

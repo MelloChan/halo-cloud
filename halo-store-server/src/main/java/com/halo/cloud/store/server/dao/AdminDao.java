@@ -1,7 +1,7 @@
 package com.halo.cloud.store.server.dao;
 
 
-import com.halo.cloud.entity.Admin;
+import com.halo.cloud.entity.store.Admin;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

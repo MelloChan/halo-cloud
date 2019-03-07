@@ -1,6 +1,6 @@
 package com.halo.cloud.store.server.dao;
 
-import com.halo.cloud.entity.OrderShipment;
+import com.halo.cloud.entity.store.OrderShipment;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

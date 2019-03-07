@@ -1,6 +1,6 @@
 package com.halo.cloud.store.server.dao;
 
-import com.halo.cloud.entity.Brand;
+import com.halo.cloud.entity.store.Brand;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;

@@ -1,12 +1,9 @@
 package com.halo.cloud.store.server;
 
-import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.Bean;
 
-import javax.sql.DataSource;
 
 /**
  * @Author: mellochan[陈文铭]
@@ -20,8 +17,4 @@ public class HaloStoreServerApplication {
         SpringApplication.run(HaloStoreServerApplication.class,args);
     }
 
-    @Bean
-    public DataSource dataSource(){
-        return new DruidDataSource();
-    }
 }

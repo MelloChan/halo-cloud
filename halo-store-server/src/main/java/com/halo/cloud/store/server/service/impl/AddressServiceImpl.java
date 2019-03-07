@@ -2,7 +2,7 @@ package com.halo.cloud.store.server.service.impl;
 
 
 import com.halo.cloud.dto.AddressDTO;
-import com.halo.cloud.entity.UserAddress;
+import com.halo.cloud.entity.store.UserAddress;
 import com.halo.cloud.store.server.dao.UserAddressDao;
 import com.halo.cloud.store.server.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;

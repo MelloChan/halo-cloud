@@ -2,7 +2,7 @@ package com.halo.cloud.store.server.service.impl;
 
 import com.halo.cloud.store.server.dao.AdminDao;
 import com.halo.cloud.store.server.service.AdminInfoService;
-import com.halo.cloud.entity.Admin;
+import com.halo.cloud.entity.store.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.halo.cloud.util.DigestUtil;

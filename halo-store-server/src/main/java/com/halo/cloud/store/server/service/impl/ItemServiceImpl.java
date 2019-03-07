@@ -8,7 +8,7 @@ import com.halo.cloud.store.server.service.ItemService;
 
 import com.halo.cloud.dto.ItemDTO;
 import com.halo.cloud.dto.ItemDetailDTO;
-import com.halo.cloud.entity.Product;
+import com.halo.cloud.entity.store.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

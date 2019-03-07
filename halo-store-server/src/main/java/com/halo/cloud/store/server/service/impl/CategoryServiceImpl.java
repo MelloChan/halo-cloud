@@ -7,9 +7,9 @@ import com.halo.cloud.store.server.dao.TypeDao;
 import com.halo.cloud.store.server.service.CategoryService;
 import com.halo.cloud.dto.CategoryDTO;
 import com.halo.cloud.dto.KindDTO;
-import com.halo.cloud.entity.Brand;
-import com.halo.cloud.entity.Category;
-import com.halo.cloud.entity.Type;
+import com.halo.cloud.entity.store.Brand;
+import com.halo.cloud.entity.store.Category;
+import com.halo.cloud.entity.store.Type;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

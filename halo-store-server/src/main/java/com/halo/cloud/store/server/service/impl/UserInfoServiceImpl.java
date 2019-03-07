@@ -4,8 +4,8 @@ package com.halo.cloud.store.server.service.impl;
 import com.halo.cloud.dto.BackstageUserProfileDTO;
 import com.halo.cloud.dto.UserProfileInfoDTO;
 import com.halo.cloud.dto.UserRegisterInfoDTO;
-import com.halo.cloud.entity.UserProfile;
-import com.halo.cloud.entity.UserRegistry;
+import com.halo.cloud.entity.store.UserProfile;
+import com.halo.cloud.entity.store.UserRegistry;
 import com.halo.cloud.store.server.conf.QiNiu;
 import com.halo.cloud.store.server.dao.UserAddressDao;
 import com.halo.cloud.store.server.dao.UserProfileDao;
@@ -13,6 +13,8 @@ import com.halo.cloud.store.server.dao.UserRegistryDao;
 import com.halo.cloud.store.server.service.UserInfoService;
 import com.halo.cloud.store.server.util.UploadUtil;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,6 +32,9 @@ import java.util.List;
  */
 @Service
 public class UserInfoServiceImpl implements UserInfoService {
+
+    private static final Logger log= LoggerFactory.getLogger(UserInfoServiceImpl.class);
+
     @Autowired
     private UserRegistryDao userRegistryDao;
     @Autowired
@@ -88,10 +93,16 @@ public class UserInfoServiceImpl implements UserInfoService {
 
     @Override
     public UserProfileInfoDTO getUserProfileInfoByUId(Integer userId) {
-        UserProfile userProfile = userProfileDao.getUserProfileInfoByUId(userId);
-        return new UserProfileInfoDTO(
-                userProfile.getUsername(), "//" + userProfile.getAvatar(), userProfile.getSecurityLevel(), userProfile.getEmail(),
-                userProfile.getPhone(), userProfile.getPwdProtection());
+        try {
+            UserProfile userProfile = userProfileDao.getUserProfileInfoByUId(userId);
+            return new UserProfileInfoDTO(
+                    userProfile.getUsername(), "//" + userProfile.getAvatar(), userProfile.getSecurityLevel(), userProfile.getEmail(),
+                    userProfile.getPhone(), userProfile.getPwdProtection());
+        }catch (Exception e){
+            log.error("[getUserProfileInfoByUId] error:{}",e,e.getMessage());
+            return null;
+        }
+
     }
 
 

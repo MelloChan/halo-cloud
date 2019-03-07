@@ -1,4 +1,4 @@
-package com.halo.cloud.entity;
+package com.halo.cloud.entity.store;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -6,13 +6,12 @@ import java.util.Date;
 /**
  * @author MelloChan
  */
-public class Admin implements Serializable {
-    private static final long serialVersionUID = -3304045328872472453L;
+public class UserRegistry implements Serializable {
+    private static final long serialVersionUID = 6268232763545056243L;
     private Integer id;
-    private String username;
+    private String phone;
     private String pwd;
     private String salt;
-    private String email;
     private Date gmtCreate;
     private Date gmtUpdated;
 
@@ -24,12 +23,12 @@ public class Admin implements Serializable {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getPwd() {
@@ -48,14 +47,6 @@ public class Admin implements Serializable {
         this.salt = salt;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public Date getGmtCreate() {
         return gmtCreate;
     }
@@ -70,18 +61,5 @@ public class Admin implements Serializable {
 
     public void setGmtUpdated(Date gmtUpdated) {
         this.gmtUpdated = gmtUpdated;
-    }
-
-    @Override
-    public String toString() {
-        return "Admin{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", salt='" + salt + '\'' +
-                ", email='" + email + '\'' +
-                ", gmtCreate=" + gmtCreate +
-                ", gmtUpdated=" + gmtUpdated +
-                '}';
     }
 }

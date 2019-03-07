@@ -1,8 +1,8 @@
 package com.halo.cloud.dto;
 
 
-import com.halo.cloud.entity.Brand;
-import com.halo.cloud.entity.Category;
+import com.halo.cloud.entity.store.Brand;
+import com.halo.cloud.entity.store.Category;
 
 import java.io.Serializable;
 import java.util.List;

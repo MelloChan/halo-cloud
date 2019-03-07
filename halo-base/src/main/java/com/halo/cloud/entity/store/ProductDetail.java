@@ -1,4 +1,4 @@
-package com.halo.cloud.entity;
+package com.halo.cloud.entity.store;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -6,14 +6,13 @@ import java.util.Date;
 /**
  * @author MelloChan
  */
-public class ProductImage implements Serializable {
-    private static final long serialVersionUID = -6192233338153999299L;
+public class ProductDetail implements Serializable {
+    private static final long serialVersionUID = 396561138810336783L;
     private Integer id;
-    private String imgUrl;
+    private String description;
     private Integer proId;
     private Date gmtCreate;
     private Date gmtUpdated;
-
 
     public Integer getId() {
         return id;
@@ -31,14 +30,13 @@ public class ProductImage implements Serializable {
         this.proId = proId;
     }
 
-    public String getImgUrl() {
-        return imgUrl;
+    public String getDescription() {
+        return description;
     }
 
-    public void setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
+    public void setDescription(String description) {
+        this.description = description;
     }
-
 
     public Date getGmtCreate() {
         return gmtCreate;

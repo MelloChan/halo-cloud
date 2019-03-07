@@ -1,15 +1,15 @@
-package com.halo.cloud.entity;
+package com.halo.cloud.entity.forum;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author MelloChan
+ * @Author: mellochan[陈文铭]
+ * @Date: 2019/3/7 23:53
+ * @Version 1.0
  */
 public class Type implements Serializable {
-    private static final long serialVersionUID = 4247714927584087360L;
     private Integer id;
-    private Integer cateId;
     private String typeName;
     private Date gmtCreate;
     private Date gmtUpdated;
@@ -20,14 +20,6 @@ public class Type implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getCateId() {
-        return cateId;
-    }
-
-    public void setCateId(Integer cateId) {
-        this.cateId = cateId;
     }
 
     public String getTypeName() {
@@ -52,5 +44,15 @@ public class Type implements Serializable {
 
     public void setGmtUpdated(Date gmtUpdated) {
         this.gmtUpdated = gmtUpdated;
+    }
+
+    @Override
+    public String toString() {
+        return "Type{" +
+                "id=" + id +
+                ", typeName='" + typeName + '\'' +
+                ", gmtCreate=" + gmtCreate +
+                ", gmtUpdated=" + gmtUpdated +
+                '}';
     }
 }

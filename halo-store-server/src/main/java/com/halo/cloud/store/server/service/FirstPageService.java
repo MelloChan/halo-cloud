@@ -1,7 +1,7 @@
 package com.halo.cloud.store.server.service;
 
 
-import com.halo.cloud.dto.FirstPageInfoDTO;
+import com.halo.cloud.dto.store.FirstPageInfoDTO;
 
 /**
  * @author SAIKAII

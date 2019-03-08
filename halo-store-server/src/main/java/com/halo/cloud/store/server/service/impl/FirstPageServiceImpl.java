@@ -4,7 +4,7 @@ package com.halo.cloud.store.server.service.impl;
 import com.halo.cloud.store.server.dao.OrderDao;
 import com.halo.cloud.store.server.dao.ProductDao;
 import com.halo.cloud.store.server.service.FirstPageService;
-import com.halo.cloud.dto.FirstPageInfoDTO;
+import com.halo.cloud.dto.store.FirstPageInfoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

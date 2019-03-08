@@ -1,32 +1,38 @@
-package com.halo.cloud.dto;
+package com.halo.cloud.dto.store;
 
-
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
+ * 展示页面商品信息
+ *
  * @author MelloChan
- * @date 2018/6/2
+ * @date 2018/5/16
  */
-public class CartItemDTO implements Serializable {
-    private static final long serialVersionUID = 6966010392610826703L;
-    @Min(1)
+public class ItemDTO implements Serializable {
+
+    private static final long serialVersionUID = -3486758677948381701L;
     private Integer proId;
-    @NotBlank
     private String imgUrl;
-    @NotBlank
+    private String name;
     private String title;
-    @Min(1)
     private Integer price;
-    @Min(1)
-    private Integer number;
+
+    public ItemDTO() {
+    }
+
+    public ItemDTO(Integer proId, String imgUrl, String name, String title, Integer price) {
+        this.proId = proId;
+        this.imgUrl = imgUrl;
+        this.name = name;
+        this.title = title;
+        this.price = price;
+    }
 
     public Integer getProId() {
         return proId;
     }
 
-    public void setId(Integer proId) {
+    public void setProId(Integer proId) {
         this.proId = proId;
     }
 
@@ -38,8 +44,12 @@ public class CartItemDTO implements Serializable {
         this.imgUrl = imgUrl;
     }
 
-    public void setProId(Integer proId) {
-        this.proId = proId;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getTitle() {
@@ -48,14 +58,6 @@ public class CartItemDTO implements Serializable {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
     }
 
     public Integer getPrice() {
@@ -68,12 +70,12 @@ public class CartItemDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "CartItemDTO{" +
+        return "Item{" +
                 "proId=" + proId +
                 ", imgUrl='" + imgUrl + '\'' +
+                ", name='" + name + '\'' +
                 ", title='" + title + '\'' +
                 ", price=" + price +
-                ", number=" + number +
                 '}';
     }
 }

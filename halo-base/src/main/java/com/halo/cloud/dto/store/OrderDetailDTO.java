@@ -1,4 +1,4 @@
-package com.halo.cloud.dto;
+package com.halo.cloud.dto.store;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;

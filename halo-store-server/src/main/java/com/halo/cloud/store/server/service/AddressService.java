@@ -1,7 +1,7 @@
 package com.halo.cloud.store.server.service;
 
 
-import com.halo.cloud.dto.AddressDTO;
+import com.halo.cloud.dto.store.AddressDTO;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.halo.cloud.dto;
+package com.halo.cloud.dto.store;
 
 import java.io.Serializable;
 

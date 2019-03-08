@@ -1,7 +1,7 @@
 package com.halo.cloud.store.server.service;
 
 
-import com.halo.cloud.dto.ItemInfoDTO;
+import com.halo.cloud.dto.store.ItemInfoDTO;
 
 import java.util.List;
 

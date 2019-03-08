@@ -1,6 +1,6 @@
 package com.halo.cloud.store.server.web;
 
-import com.halo.cloud.dto.UserProfileInfoDTO;
+import com.halo.cloud.dto.store.UserProfileInfoDTO;
 import com.halo.cloud.store.api.UserRestApi;
 import com.halo.cloud.store.server.service.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;

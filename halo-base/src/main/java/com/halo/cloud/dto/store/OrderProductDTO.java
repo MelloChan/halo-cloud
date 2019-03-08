@@ -1,32 +1,28 @@
-package com.halo.cloud.dto;
+package com.halo.cloud.dto.store;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
- * 展示页面商品信息
- *
  * @author MelloChan
- * @date 2018/5/16
+ * @date 2018/6/10
  */
-public class ItemDTO implements Serializable {
+public class OrderProductDTO implements Serializable {
 
-    private static final long serialVersionUID = -3486758677948381701L;
+    private static final long serialVersionUID = 3304533797525751242L;
+    @Min(1)
     private Integer proId;
+    @NotBlank
     private String imgUrl;
-    private String name;
+    @NotBlank
     private String title;
+    @Min(1)
     private Integer price;
-
-    public ItemDTO() {
-    }
-
-    public ItemDTO(Integer proId, String imgUrl, String name, String title, Integer price) {
-        this.proId = proId;
-        this.imgUrl = imgUrl;
-        this.name = name;
-        this.title = title;
-        this.price = price;
-    }
+    @Min(1)
+    private Short number;
+    @Min(1)
+    private Integer total;
 
     public Integer getProId() {
         return proId;
@@ -42,14 +38,6 @@ public class ItemDTO implements Serializable {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getTitle() {
@@ -68,14 +56,32 @@ public class ItemDTO implements Serializable {
         this.price = price;
     }
 
+    public Short getNumber() {
+        return number;
+    }
+
+    public void setNumber(Short number) {
+        this.number = number;
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
+    }
+
+
     @Override
     public String toString() {
-        return "Item{" +
+        return "OrderProductDTO{" +
                 "proId=" + proId +
                 ", imgUrl='" + imgUrl + '\'' +
-                ", name='" + name + '\'' +
                 ", title='" + title + '\'' +
                 ", price=" + price +
+                ", number=" + number +
+                ", total=" + total +
                 '}';
     }
 }

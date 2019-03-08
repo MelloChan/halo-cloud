@@ -1,4 +1,4 @@
-package com.halo.cloud.dto;
+package com.halo.cloud.dto.store;
 
 
 import javax.validation.constraints.NotBlank;
@@ -8,14 +8,23 @@ import java.io.Serializable;
  * @author MelloChan
  * @date 2018/6/10
  */
-public class ReceiverInfoDTO implements Serializable {
-    private static final long serialVersionUID = 153485277623949744L;
+public class AddressDTO implements Serializable {
+    private static final long serialVersionUID = -6933186620119081688L;
+    private Integer id;
     @NotBlank
     private String name;
     @NotBlank
     private String phone;
     @NotBlank
     private String address;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -43,8 +52,9 @@ public class ReceiverInfoDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "ReceiverInfoDTO{" +
-                "name='" + name + '\'' +
+        return "AddressDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", address='" + address + '\'' +
                 '}';

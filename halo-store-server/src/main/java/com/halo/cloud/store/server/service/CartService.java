@@ -2,8 +2,8 @@ package com.halo.cloud.store.server.service;
 
 import com.auth0.jwt.interfaces.Claim;
 
-import com.halo.cloud.dto.CartDTO;
-import com.halo.cloud.dto.CartItemDTO;
+import com.halo.cloud.dto.store.CartDTO;
+import com.halo.cloud.dto.store.CartItemDTO;
 import com.halo.cloud.store.server.util.RedisUtil;
 import com.halo.cloud.util.GsonUtil;
 import com.halo.cloud.util.TokenUtil;

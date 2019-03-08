@@ -1,4 +1,5 @@
-package com.halo.cloud.dto;
+package com.halo.cloud.dto.store;
+
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -6,11 +7,10 @@ import java.io.Serializable;
 
 /**
  * @author MelloChan
- * @date 2018/6/10
+ * @date 2018/6/2
  */
-public class OrderProductDTO implements Serializable {
-
-    private static final long serialVersionUID = 3304533797525751242L;
+public class CartItemDTO implements Serializable {
+    private static final long serialVersionUID = 6966010392610826703L;
     @Min(1)
     private Integer proId;
     @NotBlank
@@ -20,15 +20,13 @@ public class OrderProductDTO implements Serializable {
     @Min(1)
     private Integer price;
     @Min(1)
-    private Short number;
-    @Min(1)
-    private Integer total;
+    private Integer number;
 
     public Integer getProId() {
         return proId;
     }
 
-    public void setProId(Integer proId) {
+    public void setId(Integer proId) {
         this.proId = proId;
     }
 
@@ -40,12 +38,24 @@ public class OrderProductDTO implements Serializable {
         this.imgUrl = imgUrl;
     }
 
+    public void setProId(Integer proId) {
+        this.proId = proId;
+    }
+
     public String getTitle() {
         return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
     public Integer getPrice() {
@@ -56,32 +66,14 @@ public class OrderProductDTO implements Serializable {
         this.price = price;
     }
 
-    public Short getNumber() {
-        return number;
-    }
-
-    public void setNumber(Short number) {
-        this.number = number;
-    }
-
-    public Integer getTotal() {
-        return total;
-    }
-
-    public void setTotal(Integer total) {
-        this.total = total;
-    }
-
-
     @Override
     public String toString() {
-        return "OrderProductDTO{" +
+        return "CartItemDTO{" +
                 "proId=" + proId +
                 ", imgUrl='" + imgUrl + '\'' +
                 ", title='" + title + '\'' +
                 ", price=" + price +
                 ", number=" + number +
-                ", total=" + total +
                 '}';
     }
 }

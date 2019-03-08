@@ -1,9 +1,9 @@
 package com.halo.cloud.store.server.service.impl;
 
 
-import com.halo.cloud.dto.BackstageUserProfileDTO;
-import com.halo.cloud.dto.UserProfileInfoDTO;
-import com.halo.cloud.dto.UserRegisterInfoDTO;
+import com.halo.cloud.dto.store.BackstageUserProfileDTO;
+import com.halo.cloud.dto.store.UserProfileInfoDTO;
+import com.halo.cloud.dto.store.UserRegisterInfoDTO;
 import com.halo.cloud.entity.store.UserProfile;
 import com.halo.cloud.entity.store.UserRegistry;
 import com.halo.cloud.store.server.conf.QiNiu;

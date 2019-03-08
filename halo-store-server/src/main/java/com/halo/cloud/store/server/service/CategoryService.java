@@ -2,8 +2,8 @@ package com.halo.cloud.store.server.service;
 
 
 
-import com.halo.cloud.dto.CategoryDTO;
-import com.halo.cloud.dto.KindDTO;
+import com.halo.cloud.dto.store.CategoryDTO;
+import com.halo.cloud.dto.store.KindDTO;
 
 import java.util.List;
 

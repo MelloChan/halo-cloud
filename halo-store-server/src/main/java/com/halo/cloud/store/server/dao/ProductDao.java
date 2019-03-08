@@ -1,7 +1,7 @@
 package com.halo.cloud.store.server.dao;
 
 
-import com.halo.cloud.dto.ItemInfoDTO;
+import com.halo.cloud.dto.store.ItemInfoDTO;
 import com.halo.cloud.entity.store.Product;
 import org.apache.ibatis.annotations.*;
 

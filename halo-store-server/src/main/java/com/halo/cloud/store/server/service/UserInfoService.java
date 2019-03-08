@@ -2,9 +2,9 @@ package com.halo.cloud.store.server.service;
 
 
 
-import com.halo.cloud.dto.BackstageUserProfileDTO;
-import com.halo.cloud.dto.UserProfileInfoDTO;
-import com.halo.cloud.dto.UserRegisterInfoDTO;
+import com.halo.cloud.dto.store.BackstageUserProfileDTO;
+import com.halo.cloud.dto.store.UserProfileInfoDTO;
+import com.halo.cloud.dto.store.UserRegisterInfoDTO;
 
 import javax.servlet.http.Part;
 import java.io.IOException;

@@ -3,7 +3,7 @@ package com.halo.cloud.store.server.service.impl;
 
 import com.halo.cloud.store.server.dao.ProductDao;
 import com.halo.cloud.store.server.service.BackstageProductManageService;
-import com.halo.cloud.dto.ItemInfoDTO;
+import com.halo.cloud.dto.store.ItemInfoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

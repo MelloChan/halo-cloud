@@ -30,6 +30,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!--websocket -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
@@ -40,6 +45,7 @@
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>1.3.0</version>
         </dependency>
+        <!--halo基础包-->
         <dependency>
             <groupId>com.halo.cloud</groupId>
             <artifactId>halo-base</artifactId>

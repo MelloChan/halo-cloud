@@ -10,7 +10,7 @@ import com.halo.cloud.store.server.dao.OrderShipmentDao;
 import com.halo.cloud.store.server.service.CartService;
 import com.halo.cloud.store.server.service.ItemService;
 import com.halo.cloud.store.server.service.OrderService;
-import com.halo.cloud.store.server.util.RedisUtil;
+import com.halo.cloud.util.RedisUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -15,6 +15,11 @@
     <description>halo-base::halo project for Spring Boot</description>
 
     <dependencies>
+        <!-- redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
         <!--validator-->
         <dependency>
             <groupId>org.hibernate.validator</groupId>

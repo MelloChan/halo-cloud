@@ -4,7 +4,7 @@ package com.halo.cloud.store.server.service;
 import com.halo.cloud.store.server.conf.Email;
 import com.halo.cloud.store.server.conf.Ucpaas;
 import com.halo.cloud.store.server.util.EmailUtil;
-import com.halo.cloud.store.server.util.RedisUtil;
+import com.halo.cloud.util.RedisUtil;
 import com.halo.cloud.store.server.util.SmsUtil;
 
 

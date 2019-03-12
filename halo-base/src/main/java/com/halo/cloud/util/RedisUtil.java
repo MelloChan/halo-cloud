@@ -1,9 +1,10 @@
-package com.halo.cloud.store.server.util;
+package com.halo.cloud.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -32,8 +33,18 @@ public class RedisUtil {
      * @param expires 过期时间 单位秒
      * @param value   值
      */
-    public void add(final String key, final Long expires, final String value) {
+    public void add(final String key, final Long expires, final Object value) {
         redisTemplate.opsForValue().set(key, value, expires, TimeUnit.SECONDS);
+    }
+
+    /**
+     * 添加集合
+     *
+     * @param key
+     * @param value
+     */
+    public void addForSet(final String key, final Object value) {
+        redisTemplate.opsForSet().add(key, value);
     }
 
     /**
@@ -43,6 +54,14 @@ public class RedisUtil {
      */
     public void delete(String key) {
         redisTemplate.delete(key);
+    }
+
+    /**
+     * @param key
+     * @param value
+     */
+    public void deleteForSet(String key, Object value) {
+        redisTemplate.opsForSet().remove(key, value);
     }
 
     /**
@@ -66,5 +85,14 @@ public class RedisUtil {
      */
     public Object get(final String keyId) {
         return redisTemplate.opsForValue().get(keyId);
+    }
+
+    /**
+     * 获取集合
+     * @param key
+     * @return
+     */
+    public Set<Object> getForSet(final String key) {
+        return redisTemplate.opsForSet().members(key);
     }
 }

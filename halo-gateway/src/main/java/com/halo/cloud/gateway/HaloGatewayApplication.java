@@ -10,7 +10,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -18,7 +20,9 @@ import java.util.Properties;
 @EnableZuulProxy
 @SpringBootApplication
 @EnableDiscoveryClient
+@EnableScheduling
 @EnableFeignClients(basePackages = {"com.halo.cloud"})
+@ComponentScan("com.halo.cloud")
 public class HaloGatewayApplication {
     private static final Logger log = LoggerFactory.getLogger(HaloGatewayApplication.class);
 

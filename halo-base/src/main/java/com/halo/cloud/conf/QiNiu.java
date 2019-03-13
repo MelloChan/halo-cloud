@@ -1,4 +1,4 @@
-package com.halo.cloud.store.server.conf;
+package com.halo.cloud.conf;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

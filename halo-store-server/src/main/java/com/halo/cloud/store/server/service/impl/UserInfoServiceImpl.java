@@ -6,12 +6,12 @@ import com.halo.cloud.dto.store.UserProfileInfoDTO;
 import com.halo.cloud.dto.store.UserRegisterInfoDTO;
 import com.halo.cloud.entity.store.UserProfile;
 import com.halo.cloud.entity.store.UserRegistry;
-import com.halo.cloud.store.server.conf.QiNiu;
+import com.halo.cloud.conf.QiNiu;
 import com.halo.cloud.store.server.dao.UserAddressDao;
 import com.halo.cloud.store.server.dao.UserProfileDao;
 import com.halo.cloud.store.server.dao.UserRegistryDao;
 import com.halo.cloud.store.server.service.UserInfoService;
-import com.halo.cloud.store.server.util.UploadUtil;
+import com.halo.cloud.util.UploadUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

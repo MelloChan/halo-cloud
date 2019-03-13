@@ -1,7 +1,7 @@
-package com.halo.cloud.store.server.util;
+package com.halo.cloud.util;
 
 import com.google.gson.Gson;
-import com.halo.cloud.store.server.conf.QiNiu;
+import com.halo.cloud.conf.QiNiu;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;

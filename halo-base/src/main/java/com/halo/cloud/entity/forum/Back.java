@@ -13,6 +13,7 @@ public class Back implements Serializable {
     private Integer userId;
     private Short topicId;
     private String content;
+    private String image;
     private Date gmtCreate;
     private Date gmtUpdated;
 
@@ -48,6 +49,14 @@ public class Back implements Serializable {
         this.content = content;
     }
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
     public Date getGmtCreate() {
         return gmtCreate;
     }
@@ -71,6 +80,7 @@ public class Back implements Serializable {
                 ", userId=" + userId +
                 ", topicId=" + topicId +
                 ", content='" + content + '\'' +
+                ", image='" + image + '\'' +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtUpdated=" + gmtUpdated +
                 '}';

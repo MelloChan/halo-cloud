@@ -13,7 +13,7 @@ import javax.sql.DataSource;
  * @Date: 2019/3/6 23:12
  * @Version 1.0
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "com.halo.cloud")
 @EnableDiscoveryClient
 public class HaloAdminServerApplication {
     public static void main(String[] args) {

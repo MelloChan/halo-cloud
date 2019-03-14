@@ -6,7 +6,6 @@ import com.halo.cloud.dto.store.UserProfileInfoDTO;
 import com.halo.cloud.dto.store.UserRegisterInfoDTO;
 import com.halo.cloud.entity.store.UserProfile;
 import com.halo.cloud.entity.store.UserRegistry;
-import com.halo.cloud.conf.QiNiu;
 import com.halo.cloud.store.server.dao.UserAddressDao;
 import com.halo.cloud.store.server.dao.UserProfileDao;
 import com.halo.cloud.store.server.dao.UserRegistryDao;
@@ -41,8 +40,6 @@ public class UserInfoServiceImpl implements UserInfoService {
     private UserProfileDao userProfileDao;
     @Autowired
     private UserAddressDao userAddressDao;
-    @Autowired
-    private QiNiu qiNiu;
 
     @Override
     public Integer getIdByPhone(String phone) {
@@ -136,7 +133,7 @@ public class UserInfoServiceImpl implements UserInfoService {
             while ((i > 0)) {
                 i = in.read(buffer);
             }
-            imgUrl = UploadUtil.uploadToQiNiuYun(qiNiu, buffer);
+            imgUrl = UploadUtil.uploadToQiNiuYun(buffer);
             userProfileDao.updateAvatarById(imgUrl, userId);
         }
         return "//" + imgUrl;

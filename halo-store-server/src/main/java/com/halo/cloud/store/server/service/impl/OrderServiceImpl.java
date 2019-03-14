@@ -10,9 +10,9 @@ import com.halo.cloud.store.server.dao.OrderShipmentDao;
 import com.halo.cloud.store.server.service.CartService;
 import com.halo.cloud.store.server.service.ItemService;
 import com.halo.cloud.store.server.service.OrderService;
-import com.halo.cloud.util.RedisUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.halo.cloud.util.DigestUtil;
@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author MelloChan
@@ -29,7 +30,7 @@ import java.util.List;
 @Service
 public class OrderServiceImpl implements OrderService {
     @Autowired
-    private RedisUtil redisUtil;
+    private RedisTemplate redisTemplate;
     @Autowired
     private ItemService itemService;
     @Autowired
@@ -44,7 +45,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public String generateOrderId(Integer userId) {
         String orderId = DigestUtil.generateSalt();
-        redisUtil.add(orderId, 60 * 30L, String.valueOf(userId));
+        redisTemplate.opsForValue().set(orderId,String.valueOf(userId),60*30L, TimeUnit.SECONDS);
         return orderId;
     }
 

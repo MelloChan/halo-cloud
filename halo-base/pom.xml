@@ -15,11 +15,6 @@
     <description>halo-base::halo project for Spring Boot</description>
 
     <dependencies>
-        <!-- redis -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-        </dependency>
         <!--validator-->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -42,6 +37,10 @@
             <groupId>com.qiniu</groupId>
             <artifactId>qiniu-java-sdk</artifactId>
             <version>[7.2.0, 7.2.99]</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
         </dependency>
     </dependencies>
 

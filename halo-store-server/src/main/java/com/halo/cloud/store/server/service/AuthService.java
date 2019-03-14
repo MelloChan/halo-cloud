@@ -4,17 +4,18 @@ package com.halo.cloud.store.server.service;
 import com.halo.cloud.store.server.conf.Email;
 import com.halo.cloud.store.server.conf.Ucpaas;
 import com.halo.cloud.store.server.util.EmailUtil;
-import com.halo.cloud.util.RedisUtil;
 import com.halo.cloud.store.server.util.SmsUtil;
 
 
 import com.halo.cloud.util.VerifyCodeGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 
 import javax.mail.MessagingException;
 import java.security.GeneralSecurityException;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author MelloChan
@@ -22,6 +23,7 @@ import java.security.GeneralSecurityException;
  */
 @Service
 public class AuthService {
+
     @Autowired
     private Ucpaas ucpaas;
     @Autowired
@@ -29,7 +31,7 @@ public class AuthService {
     @Autowired
     private UserInfoService userInfoService;
     @Autowired
-    private RedisUtil redisUtil;
+    private RedisTemplate redisTemplate;
 
     /**
      * 发送短信验证码 本地验证码存入缓存 60s内过期
@@ -40,7 +42,7 @@ public class AuthService {
      */
     public boolean sendSmsCode(String phone, String tempId) {
         String code = VerifyCodeGenerator.getFourVerifyCode();
-        redisUtil.add(phone, 60L, code);
+        redisTemplate.opsForValue().set(phone, code, 60L, TimeUnit.SECONDS);
         ucpaas = new Ucpaas(ucpaas.getSid(), ucpaas.getToken(), ucpaas.getAppid(), tempId, code, phone, ucpaas.getUrl());
         String json = SmsUtil.sendSms(ucpaas);
         int okIdx = json.indexOf("OK");
@@ -56,7 +58,7 @@ public class AuthService {
      */
     public void sendEmail(String destinationEmail) throws GeneralSecurityException, MessagingException {
         String code = VerifyCodeGenerator.getSixVerifyCode();
-        redisUtil.add(destinationEmail, 1800L, code);
+        redisTemplate.opsForValue().set(destinationEmail, code, 1800L, TimeUnit.SECONDS);
         String msg = "您好：\n" +
                 "感谢您使用Halo.服务。\n" +
                 "您正在进行Halo. 账号邮箱操作，请在30分钟内将此验证码：" + code + " 输入验证码输入框，以完成验证。\n" +
@@ -103,7 +105,7 @@ public class AuthService {
      * @return 是否正确
      */
     public boolean verifyCode(String phone, String code) {
-        return code.equals(redisUtil.get(phone));
+        return code.equals(redisTemplate.opsForValue().get(phone));
     }
 
     /**
@@ -114,6 +116,6 @@ public class AuthService {
      * @return 是否正确
      */
     public boolean verifyEmailCode(String email, String code) {
-        return code.equals(redisUtil.get(email));
+        return code.equals(redisTemplate.opsForValue().get(email));
     }
 }

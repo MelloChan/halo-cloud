@@ -1,7 +1,6 @@
 package com.halo.cloud.util;
 
 import com.google.gson.Gson;
-import com.halo.cloud.conf.QiNiu;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
@@ -27,21 +26,20 @@ public class UploadUtil {
 
     /**
      * 七牛云图片上传
-     * @param qiNiu 七牛云配置类
      * @param buffer 图片数据
      * @return 图片URL
      */
-    public static String uploadToQiNiuYun(QiNiu qiNiu, byte[] buffer) {
+    public static String uploadToQiNiuYun(byte[] buffer) {
 
         //构造一个带指定Zone对象的配置类
         Configuration cfg = new Configuration(Zone.zone2());
         //...其他参数参考类注释
         UploadManager uploadManager = new UploadManager(cfg);
         //...生成上传凭证，然后准备上传
-        String accessKey = qiNiu.getAccessKey();
-        String secretKey = qiNiu.getSecretKey();
-        String bucket = qiNiu.getBucket();
-        String cname = qiNiu.getCname();
+        String accessKey = Const.QiNiu.QINIU_ACCESS_KEY;
+        String secretKey = Const.QiNiu.QINIU_SECRET_KEY;
+        String bucket = Const.QiNiu.QINIU_BUCKET;
+        String cname = Const.QiNiu.QINIU_CNAME;
         //默认不指定key的情况下，以文件内容的hash值作为文件名
         String key = Arrays.hashCode(buffer) + "";
         Auth auth = Auth.create(accessKey, secretKey);

@@ -4,10 +4,10 @@ import com.auth0.jwt.interfaces.Claim;
 
 import com.halo.cloud.dto.store.CartDTO;
 import com.halo.cloud.dto.store.CartItemDTO;
-import com.halo.cloud.util.RedisUtil;
 import com.halo.cloud.util.GsonUtil;
 import com.halo.cloud.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.Cookie;
@@ -26,7 +26,7 @@ import java.util.Map;
 public class CartService {
 
     @Autowired
-    private RedisUtil redisUtil;
+    private RedisTemplate redisTemplate;
 
     /**
      * 加入购物车
@@ -42,7 +42,7 @@ public class CartService {
         Map<String, Claim> claims = TokenUtil.verifyToken(token);
         if (null != claims) {
             int id = claims.get("uid").asInt();
-            cartDTO = (CartDTO) redisUtil.get("cart:" + id);
+            cartDTO = (CartDTO) redisTemplate.opsForValue().get("cart:" + id);
         }
 
         // 购物车为空 初始化购物车
@@ -110,7 +110,7 @@ public class CartService {
         Map<String, Claim> claims = TokenUtil.verifyToken(token);
         if (claims != null) {
             int id = claims.get("uid").asInt();
-            redisUtil.add("cart:" + id, cartDTO);
+            redisTemplate.opsForValue().set("cart:" + id, cartDTO);
             cookie = new Cookie("cart", null);
             cookie.setPath("/");
             cookie.setMaxAge(0);
@@ -132,7 +132,7 @@ public class CartService {
         Map<String, Claim> claims = TokenUtil.verifyToken(token);
         if (claims != null) {
             int id = claims.get("uid").asInt();
-            cartDTO = (CartDTO) redisUtil.get("cart:" + id);
+            cartDTO = (CartDTO) redisTemplate.opsForValue().get("cart:" + id);
             if (cartDTO == null) {
                 cartDTO = getCartDTOByCookie(request);
             }

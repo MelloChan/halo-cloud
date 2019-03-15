@@ -15,6 +15,7 @@ public class Topic implements Serializable {
     private String title;
     private String content;
     private String image;
+    private Short status;
     private Date gmtCreate;
     private Date gmtUpdated;
 
@@ -82,6 +83,15 @@ public class Topic implements Serializable {
         this.gmtUpdated = gmtUpdated;
     }
 
+
+    public Short getStatus() {
+        return status;
+    }
+
+    public void setStatus(Short status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Topic{" +
@@ -91,6 +101,7 @@ public class Topic implements Serializable {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", image='" + image + '\'' +
+                ", status=" + status +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtUpdated=" + gmtUpdated +
                 '}';

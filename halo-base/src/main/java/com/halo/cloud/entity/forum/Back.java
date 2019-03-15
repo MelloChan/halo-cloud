@@ -14,6 +14,7 @@ public class Back implements Serializable {
     private Short topicId;
     private String content;
     private String image;
+    private Short status;
     private Date gmtCreate;
     private Date gmtUpdated;
 
@@ -73,6 +74,14 @@ public class Back implements Serializable {
         this.gmtUpdated = gmtUpdated;
     }
 
+    public Short getStatus() {
+        return status;
+    }
+
+    public void setStatus(Short status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Back{" +
@@ -81,6 +90,7 @@ public class Back implements Serializable {
                 ", topicId=" + topicId +
                 ", content='" + content + '\'' +
                 ", image='" + image + '\'' +
+                ", status=" + status +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtUpdated=" + gmtUpdated +
                 '}';

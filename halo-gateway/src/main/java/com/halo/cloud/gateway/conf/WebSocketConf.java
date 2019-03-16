@@ -1,6 +1,7 @@
 package com.halo.cloud.gateway.conf;
 
 import com.halo.cloud.gateway.interceptor.WebSocketChannelInterceptor;
+import com.halo.cloud.gateway.interceptor.WebSocketHttpSessionHandshakeInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,13 +32,13 @@ public class WebSocketConf implements WebSocketMessageBrokerConfigurer {
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         registry.enableSimpleBroker("/user");
         // P2P推送
-        registry.setUserDestinationPrefix("/api/ws/user");
+        registry.setUserDestinationPrefix("/user");
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         // ws连接端点
-        registry.addEndpoint("/api/ws");
+        registry.addEndpoint("/api/halo/ws").setAllowedOrigins("*").withSockJS().setInterceptors(webSocketHttpSessionHandshakeInterceptor());
     }
 
     @Override
@@ -48,6 +49,11 @@ public class WebSocketConf implements WebSocketMessageBrokerConfigurer {
     @Bean
     public WebSocketChannelInterceptor webSocketChannelInterceptor(){
         return new WebSocketChannelInterceptor(redisTemplate);
+    }
+
+    @Bean
+    public WebSocketHttpSessionHandshakeInterceptor webSocketHttpSessionHandshakeInterceptor(){
+        return new WebSocketHttpSessionHandshakeInterceptor();
     }
 
 

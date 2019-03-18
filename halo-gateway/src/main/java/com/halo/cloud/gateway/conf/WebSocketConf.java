@@ -47,12 +47,12 @@ public class WebSocketConf implements WebSocketMessageBrokerConfigurer {
     }
 
     @Bean
-    public WebSocketChannelInterceptor webSocketChannelInterceptor(){
+    public WebSocketChannelInterceptor webSocketChannelInterceptor() {
         return new WebSocketChannelInterceptor(redisTemplate);
     }
 
     @Bean
-    public WebSocketHttpSessionHandshakeInterceptor webSocketHttpSessionHandshakeInterceptor(){
+    public WebSocketHttpSessionHandshakeInterceptor webSocketHttpSessionHandshakeInterceptor() {
         return new WebSocketHttpSessionHandshakeInterceptor();
     }
 

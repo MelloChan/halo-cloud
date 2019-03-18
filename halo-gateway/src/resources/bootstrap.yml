@@ -1,6 +1,6 @@
 spring:
   application:
-    name: API-GATEWAY--SERVER
+    name: API-GATEWAY-SERVER
     version: 1.0.0
 
 #logging.config: classpath:log4j2.xml

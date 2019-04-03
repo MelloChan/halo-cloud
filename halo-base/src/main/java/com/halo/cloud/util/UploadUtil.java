@@ -59,6 +59,6 @@ public class UploadUtil {
                 //ignore
             }
         }
-        return cname + "/" + key;
+        return Const.QiNiu.QINUI_DOMAIN + "/" + key;
     }
 }

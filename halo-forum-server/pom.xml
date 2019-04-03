@@ -45,7 +45,11 @@
             <groupId>com.halo.cloud</groupId>
             <artifactId>halo-base</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.halo.cloud</groupId>
+            <artifactId>halo-forum-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!-- redis -->
         <dependency>

@@ -14,7 +14,6 @@ public class Topic implements Serializable {
     private Short typeId;
     private String title;
     private String content;
-    private String image;
     private Short status;
     private Date gmtCreate;
     private Date gmtUpdated;
@@ -59,14 +58,6 @@ public class Topic implements Serializable {
         this.content = content;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public Date getGmtCreate() {
         return gmtCreate;
     }
@@ -100,7 +91,6 @@ public class Topic implements Serializable {
                 ", typeId=" + typeId +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", image='" + image + '\'' +
                 ", status=" + status +
                 ", gmtCreate=" + gmtCreate +
                 ", gmtUpdated=" + gmtUpdated +

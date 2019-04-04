@@ -1,6 +1,5 @@
 package com.halo.cloud.admin.server;
 
-import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -18,10 +17,5 @@ import javax.sql.DataSource;
 public class HaloAdminServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(HaloAdminServerApplication.class,args);
-    }
-
-    @Bean
-    public DataSource dataSource(){
-        return new DruidDataSource();
     }
 }

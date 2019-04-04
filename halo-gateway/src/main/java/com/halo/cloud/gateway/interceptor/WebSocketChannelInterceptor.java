@@ -50,12 +50,12 @@ public class WebSocketChannelInterceptor implements ChannelInterceptor {
 
     private void connect(int uid) {
         logger.info("[connect] connect success! uid:{}", uid);
-        redisTemplate.opsForValue().set(Const.Redis.WS_USER_ID_PRE + uid, uid);
+        redisTemplate.opsForSet().add(Const.Redis.WS_SET_KEY,uid);
     }
 
     private void disconnect(int uid, StompHeaderAccessor sha) {
         logger.info("[disconnect] disconnect success! uid:{}", uid);
         Objects.requireNonNull(sha.getSessionAttributes()).remove(Const.WebSocket.WS_USER_ID);
-        redisTemplate.delete(Const.Redis.WS_USER_ID_PRE + uid);
+        redisTemplate.opsForSet().remove(Const.Redis.WS_SET_KEY,uid);
     }
 }

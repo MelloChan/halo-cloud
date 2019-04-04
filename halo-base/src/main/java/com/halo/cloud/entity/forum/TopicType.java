@@ -8,7 +8,7 @@ import java.util.Date;
  * @Date: 2019/3/7 23:53
  * @Version 1.0
  */
-public class Type implements Serializable {
+public class TopicType implements Serializable {
     private Integer id;
     private String typeName;
     private Date gmtCreate;
@@ -48,7 +48,7 @@ public class Type implements Serializable {
 
     @Override
     public String toString() {
-        return "Type{" +
+        return "TopicType{" +
                 "id=" + id +
                 ", typeName='" + typeName + '\'' +
                 ", gmtCreate=" + gmtCreate +

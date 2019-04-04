@@ -8,7 +8,7 @@ import java.util.Date;
  * @Date: 2019/3/11 21:04
  * @Version 1.0
  */
-public class Notify implements Serializable {
+public class TopicNotify implements Serializable {
 
     private Integer id;
     private Integer topicId;
@@ -76,7 +76,7 @@ public class Notify implements Serializable {
 
     @Override
     public String toString() {
-        return "Notify{" +
+        return "TopicNotify{" +
                 "id=" + id +
                 ", topicId=" + topicId +
                 ", sender=" + sender +

@@ -18,8 +18,8 @@
         <module>halo-base</module>
         <module>halo-gateway</module>
         <module>halo-store-api</module>
-        <module>halo-forum-api</module>
         <module>halo-admin-api</module>
+        <module>halo-forum-api</module>
         <module>halo-store-server</module>
         <module>halo-admin-server</module>
         <module>halo-forum-server</module>

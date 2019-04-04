@@ -12,6 +12,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -20,7 +21,7 @@ import java.util.Properties;
 @SpringBootApplication(scanBasePackages = "com.halo.cloud")
 @EnableDiscoveryClient
 @EnableScheduling
-@EnableFeignClients(basePackages = {"com.halo.cloud"})
+@EnableFeignClients(basePackages = {"com.halo.cloud.store.api","com.halo.cloud.forum.api","com.halo.cloud.admin.api"})
 public class HaloGatewayApplication {
     private static final Logger log = LoggerFactory.getLogger(HaloGatewayApplication.class);
 
@@ -42,5 +43,10 @@ public class HaloGatewayApplication {
     @Bean
     public ImmutableMap<String, String> errorCodeMap() {
         return errorCodeMap;
+    }
+
+    @Bean
+    public RestTemplate restTemplate(){
+        return new RestTemplate();
     }
 }

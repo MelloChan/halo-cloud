@@ -14,7 +14,6 @@
     <packaging>jar</packaging>
     <name>halo-forum-api</name>
     <description>halo-forum-api::halo project for Spring Boot</description>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -47,4 +46,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
 </project>

@@ -11,7 +11,8 @@ public class BackDto implements Serializable {
     private Integer backId;
     private Integer userId;
     private String userName;
-    private String createTime;
+    private String avatar;
+    private String backTime;
     private String content;
 
     public Integer getBackId() {
@@ -38,12 +39,12 @@ public class BackDto implements Serializable {
         this.userName = userName;
     }
 
-    public String getCreateTime() {
-        return createTime;
+    public String getBackTime() {
+        return backTime;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setBackTime(String backTime) {
+        this.backTime = backTime;
     }
 
     public String getContent() {
@@ -54,13 +55,22 @@ public class BackDto implements Serializable {
         this.content = content;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
         return "BackDto{" +
                 "backId=" + backId +
                 ", userId=" + userId +
                 ", userName='" + userName + '\'' +
-                ", createTime='" + createTime + '\'' +
+                ", avatar='" + avatar + '\'' +
+                ", backTime='" + backTime + '\'' +
                 ", content='" + content + '\'' +
                 '}';
     }

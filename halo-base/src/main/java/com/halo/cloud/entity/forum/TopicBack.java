@@ -8,10 +8,10 @@ import java.util.Date;
  * @Date: 2019/3/7 23:52
  * @Version 1.0
  */
-public class Back implements Serializable {
+public class TopicBack implements Serializable {
     private Integer id;
     private Integer userId;
-    private Short topicId;
+    private Integer topicId;
     private String content;
     private Short status;
     private Date gmtCreate;
@@ -33,11 +33,11 @@ public class Back implements Serializable {
         this.userId = userId;
     }
 
-    public Short getTopicId() {
+    public Integer getTopicId() {
         return topicId;
     }
 
-    public void setTopicId(Short topicId) {
+    public void setTopicId(Integer topicId) {
         this.topicId = topicId;
     }
 
@@ -75,7 +75,7 @@ public class Back implements Serializable {
 
     @Override
     public String toString() {
-        return "Back{" +
+        return "TopicBack{" +
                 "id=" + id +
                 ", userId=" + userId +
                 ", topicId=" + topicId +

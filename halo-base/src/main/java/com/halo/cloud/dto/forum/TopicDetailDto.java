@@ -17,7 +17,7 @@ public class TopicDetailDto implements Serializable {
     private Integer userId;
     private String userName;
     private String avatar;
-    private String createTime;
+    private String updateTime;
     private Integer backNumber;
     private String lastTime;
     private List<BackDto> backList;
@@ -86,12 +86,12 @@ public class TopicDetailDto implements Serializable {
         this.avatar = avatar;
     }
 
-    public String getCreateTime() {
-        return createTime;
+    public String getUpdateTime() {
+        return updateTime;
     }
 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 
     public Integer getBackNumber() {
@@ -129,7 +129,7 @@ public class TopicDetailDto implements Serializable {
                 ", userId=" + userId +
                 ", userName='" + userName + '\'' +
                 ", avatar='" + avatar + '\'' +
-                ", createTime='" + createTime + '\'' +
+                ", updateTime='" + updateTime + '\'' +
                 ", backNumber=" + backNumber +
                 ", lastTime='" + lastTime + '\'' +
                 ", backList=" + backList +

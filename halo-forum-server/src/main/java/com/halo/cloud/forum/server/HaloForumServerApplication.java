@@ -1,28 +1,20 @@
 package com.halo.cloud.forum.server;
 
-import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.Bean;
-
-import javax.sql.DataSource;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * @Author: mellochan[陈文铭]
- * @Date: 2019/3/6 23:21
+ * @Date: 2019/4/4 2:07
  * @Version 1.0
  */
-@SpringBootApplication(scanBasePackages = "com.halo.cloud")
+@SpringBootApplication
 @EnableDiscoveryClient
+@EnableFeignClients(basePackages = {"com.halo.cloud.store.api"})
 public class HaloForumServerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(HaloForumServerApplication.class,args);
-    }
-
-    @Bean
-    public DataSource dataSource(){
-        return new DruidDataSource();
+        SpringApplication.run(HaloForumServerApplication.class, args);
     }
 }
-

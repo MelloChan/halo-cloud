@@ -10,6 +10,23 @@ public class Result<T> {
     private String message;
     private T data;
 
+    public Result(){
+
+    }
+
+    public Result(String code,String message){
+        this.code=code;
+        this.message=message;
+    }
+
+    public static Result success(){
+        return new Result("0","SUCCESS");
+    }
+
+    public static Result error(){
+        return new Result("50001","ERROR");
+    }
+
     public String getCode() {
         return code;
     }

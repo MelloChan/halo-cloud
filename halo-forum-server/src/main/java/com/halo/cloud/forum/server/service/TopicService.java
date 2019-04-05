@@ -5,6 +5,9 @@ import com.halo.cloud.dto.forum.BackReq;
 import com.halo.cloud.dto.forum.TopicDetailDto;
 import com.halo.cloud.dto.forum.TopicListDto;
 import com.halo.cloud.entity.forum.Topic;
+import com.halo.cloud.entity.forum.TopicType;
+
+import java.util.List;
 
 
 /**
@@ -19,11 +22,13 @@ public interface TopicService {
 
     TopicDetailDto getTopicDetailByTopicId(int topicId, int limit, int count);
 
+    List<TopicType> getAllTopicType();
+
     boolean insertTopic(Topic topic);
 
     boolean updateTopic(Topic topic);
 
-    boolean delTopicByTopicId(int topicId);
+    boolean delTopicByTopicId(int topicId,int userId);
 
     int getBackNumber(int userId);
 
@@ -31,5 +36,5 @@ public interface TopicService {
 
     boolean insertBack(BackReq backReq);
 
-    boolean delBackByBackId(int backId);
+    boolean delBackByBackId(int backId,int userId);
 }

@@ -19,7 +19,7 @@ public interface NotifyDao {
             "FROM hl_topic_notify htn LEFT JOIN hl_topic_back htb ON htn.topic_id = htb.topic_id " +
             "AND htn.sender=htb.user_id LEFT JOIN hl_topic ht " +
             "ON ht.id=htb.topic_id LEFT JOIN hl_user_profile hup ON hup.user_id = htb.user_id " +
-            "WHERE receiver = #{userId} AND `status` = 0")
+            "WHERE receiver = #{userId} AND htb.`status` = 0 AND ht.`status` = 0")
     List<BackMsgDto> getBackNotifyByUserId(@Param("userId") int userId);
 
     @Select("SELECT * FROM hl_topic_notify WHERE `status` = 0")

@@ -7,13 +7,18 @@ import com.halo.cloud.dto.forum.TopicDetailDto;
 import com.halo.cloud.dto.forum.TopicListDto;
 import com.halo.cloud.dto.store.UserProfileInfoDTO;
 import com.halo.cloud.entity.forum.Topic;
+import com.halo.cloud.entity.forum.TopicType;
 import com.halo.cloud.forum.api.TopicRestApi;
 import com.halo.cloud.forum.server.service.TopicService;
+import com.halo.cloud.util.TokenUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -26,7 +31,7 @@ public class TopicController implements TopicRestApi {
 
     private static final Logger log = LoggerFactory.getLogger(TopicController.class);
     private final TopicService topicService;
-
+    private static HttpServletRequest request;
 
     @Autowired
     public TopicController(TopicService topicService) {
@@ -34,6 +39,10 @@ public class TopicController implements TopicRestApi {
     }
 
 
+    @ModelAttribute
+    public void init(HttpServletRequest request) {
+        TopicController.request = request;
+    }
 
     @Override
     public Result<TopicListDto> getTopicListByPage(@RequestParam("limit") int limit, @RequestParam("count") int count) {
@@ -64,47 +73,113 @@ public class TopicController implements TopicRestApi {
     }
 
     @Override
+    public Result<List<TopicType>> getTopicTypeList() {
+        List<TopicType> types = topicService.getAllTopicType();
+        Result<List<TopicType>> result = Result.success();
+        result.setData(types);
+        return result;
+    }
+
+    @Override
     public Result<Boolean> insertTopic(@RequestBody Topic topic) {
-        boolean flag = topicService.insertTopic(topic);
-        return flag ? Result.success() : Result.error();
+        try {
+            int uid = TokenUtil.getId(request.getHeader("access_token"), "uid");
+            topic.setUserId(uid);
+            boolean flag = topicService.insertTopic(topic);
+            return flag ? Result.success() : Result.error();
+        } catch (Exception e) {
+            log.error("[insertTopic] error:{}", topic, e, e.getMessage());
+            Result result = Result.error();
+            result.setMessage(e.getMessage());
+            return result;
+        }
     }
 
     @Override
     public Result<Boolean> updateTopic(@RequestBody Topic topic) {
-        boolean flag = topicService.updateTopic(topic);
-        return flag ? Result.success() : Result.error();
+        try {
+            int uid = TokenUtil.getId(request.getHeader("access_token"), "uid");
+            topic.setUserId(uid);
+            boolean flag = topicService.updateTopic(topic);
+            return flag ? Result.success() : Result.error();
+        } catch (Exception e) {
+            log.error("[updateTopic] error:{}", topic, e, e.getMessage());
+            Result result = Result.error();
+            result.setMessage(e.getMessage());
+            return result;
+        }
     }
 
     @Override
     public Result<Boolean> delTopicByTopicId(@PathVariable("topicId") int topicId) {
-        boolean flag = topicService.delTopicByTopicId(topicId);
-        return flag ? Result.success() : Result.error();
+        try {
+            int uid = TokenUtil.getId(request.getHeader("access_token"), "uid");
+            boolean flag = topicService.delTopicByTopicId(topicId, uid);
+            return flag ? Result.success() : Result.error();
+        } catch (Exception e) {
+            log.error("[delTopic] error:{}", topicId, e, e.getMessage());
+            Result result = Result.error();
+            result.setMessage(e.getMessage());
+            return result;
+        }
     }
 
     @Override
-    public Result<Integer> getBackNumber(@PathVariable("userId") int userId) {
-        Result result = Result.success();
-        result.setData(topicService.getBackNumber(userId));
-        return result;
+    public Result<Integer> getBackNumber(@RequestParam("uid") int uid) {
+        try {
+            Result result = Result.success();
+            result.setData(topicService.getBackNumber(uid));
+            return result;
+        } catch (Exception e) {
+            log.error("[getBackNumber] error:{}", e, e.getMessage());
+            Result result = Result.error();
+            result.setMessage(e.getMessage());
+            return result;
+        }
     }
 
     @Override
-    public Result<BackMsgListDto> getBackMsgListByUserId(@PathVariable("userId") int userId) {
-        BackMsgListDto backMsgListDto=topicService.getBackMsgListByUserId(userId);
-        Result result = Result.success();
-        result.setData(backMsgListDto);
-        return result;
+    public Result<BackMsgListDto> getBackMsgListByUserId() {
+        try {
+            int uid = TokenUtil.getId(request.getHeader("access_token"), "uid");
+            BackMsgListDto backMsgListDto = topicService.getBackMsgListByUserId(uid);
+            Result result = Result.success();
+            result.setData(backMsgListDto);
+            return result;
+        } catch (Exception e) {
+            log.error("[getBackMsgListByUserId] error:{}", e, e.getMessage());
+            Result result = Result.error();
+            result.setMessage(e.getMessage());
+            return result;
+        }
     }
 
     @Override
     public Result<Boolean> insertBack(@RequestBody BackReq backReq) {
-        boolean flag = topicService.insertBack(backReq);
-        return flag ? Result.success() : Result.error();
+        try {
+            int uid = TokenUtil.getId(request.getHeader("access_token"), "uid");
+            backReq.setSender(uid);
+            boolean flag = topicService.insertBack(backReq);
+            return flag ? Result.success() : Result.error();
+        } catch (Exception e) {
+            log.error("[insertBack] error:{}", backReq, e, e.getMessage());
+            Result result = Result.error();
+            result.setMessage(e.getMessage());
+            return result;
+        }
     }
 
     @Override
     public Result<Boolean> delBackByBackId(@PathVariable("backId") int backId) {
-        boolean flag = topicService.delBackByBackId(backId);
-        return flag ? Result.success() : Result.error();
+        try {
+            int uid = TokenUtil.getId(request.getHeader("access_token"), "uid");
+            boolean flag = topicService.delBackByBackId(backId, uid);
+            return flag ? Result.success() : Result.error();
+        } catch (Exception e) {
+            log.error("[delBackByBackId] error:{}", backId, e, e.getMessage());
+            Result result = Result.error();
+            result.setMessage(e.getMessage());
+            return result;
+        }
     }
 }

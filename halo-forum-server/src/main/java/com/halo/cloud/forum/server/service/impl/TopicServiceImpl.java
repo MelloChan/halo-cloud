@@ -5,9 +5,11 @@ import com.halo.cloud.dto.store.UserProfileInfoDTO;
 import com.halo.cloud.entity.forum.Topic;
 import com.halo.cloud.entity.forum.TopicBack;
 import com.halo.cloud.entity.forum.TopicNotify;
+import com.halo.cloud.entity.forum.TopicType;
 import com.halo.cloud.forum.server.dao.BackDao;
 import com.halo.cloud.forum.server.dao.NotifyDao;
 import com.halo.cloud.forum.server.dao.TopicDao;
+import com.halo.cloud.forum.server.dao.TypeDao;
 import com.halo.cloud.forum.server.service.TopicService;
 import com.halo.cloud.store.api.UserRestApi;
 import com.halo.cloud.util.TimeUtil;
@@ -40,13 +42,18 @@ public class TopicServiceImpl implements TopicService {
     private NotifyDao notifyDao;
 
     @Autowired
+    private TypeDao typeDao;
+
+    @Autowired
     private UserRestApi userRestApi;
 
     @Override
     public TopicListDto getTopicListByPage(int limit, int count) {
         limit = (limit - 1) * count;
         try {
-            List<TopicDto> topics = topicDao.getTopicByPage(limit, count);
+            List<TopicDto> topics = topicDao.getTopicByPage();
+            count = topics.size() >= count ? count : topics.size();
+            topics = topics.subList(limit, count);
             TopicListDto topicList = fillTopics(topics);
             int cnt = topicDao.countTopic();
             topicList.setCount(cnt);
@@ -61,7 +68,9 @@ public class TopicServiceImpl implements TopicService {
     public TopicListDto getTopicListByTypeId(int typeId, int limit, int count) {
         limit = (limit - 1) * count;
         try {
-            List<TopicDto> topics = topicDao.getTopicByTypeIdAndPage(typeId, limit, count);
+            List<TopicDto> topics = topicDao.getTopicByTypeIdAndPage(typeId);
+            count = topics.size() >= count ? count : topics.size();
+            topics = topics.subList(limit, count);
             TopicListDto topicList = fillTopics(topics);
             int cnt = topicDao.countTopicByTypeId(typeId);
             topicList.setCount(cnt);
@@ -97,6 +106,7 @@ public class TopicServiceImpl implements TopicService {
 
     @Override
     public TopicDetailDto getTopicDetailByTopicId(int topicId, int limit, int count) {
+        limit = (limit - 1) * count;
         try {
             TopicDetailDto topicDetail = topicDao.getTopicByTopicId(topicId);
 
@@ -111,12 +121,24 @@ public class TopicServiceImpl implements TopicService {
                 int backCount = backDao.countBackNumberByTopicId(topicId);
                 topicDetail.setBackNumber(backCount);
 
-                List<BackDto> backs = backDao.getBackDtoByTopicIdAndPage(topicId, limit, count);
+                List<BackDto> backs = backDao.getBackDtoByTopicIdAndPage(topicId);
+                count = backs.size() >= count ? count : backs.size();
+                backs = backs.subList(limit, count);
                 topicDetail.setBackList(backs);
             }
             return topicDetail;
         } catch (Exception e) {
             log.error("[getTopicDetailByTopicId] error:{}", e, e.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    public List<TopicType> getAllTopicType() {
+        try {
+            return typeDao.allTopicType();
+        } catch (Exception e) {
+            log.error("[getAllTopicType] error:{}", e, e.getMessage());
         }
         return null;
     }
@@ -144,9 +166,9 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public boolean delTopicByTopicId(int topicId) {
+    public boolean delTopicByTopicId(int topicId, int userId) {
         try {
-            int row = topicDao.updateTopicStatus(-1, topicId);
+            int row = topicDao.updateTopicStatus(-1, topicId, userId);
             return row == 1;
         } catch (Exception e) {
             log.error("[delTopic] error:{}", e, e.getMessage());
@@ -214,9 +236,9 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public boolean delBackByBackId(int backId) {
+    public boolean delBackByBackId(int backId, int userId) {
         try {
-            int row = backDao.updateBackStatus(-1, backId);
+            int row = backDao.updateBackStatus(-1, backId, userId);
             return row == 1;
         } catch (Exception e) {
             log.error("[delBackByBackId] error:{}", e, e.getMessage());
